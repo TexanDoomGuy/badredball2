@@ -11,19 +11,21 @@ func _ready():
 	set_contact_monitor(true)#     These both allow detecting if there's coliistion with get_contact_count
 	set_max_contacts_reported(999) # if this isn't set, get_contact_count will return nothing
 
+func restart():
+	freeze = true
+	global_position.y = 80
+	global_position.x = 192
+	linear_velocity = Vector2.ZERO
+	gravity_scale = 0
+	await get_tree().create_timer(0.1).timeout
+	gravity_scale = 1
+	freeze = false
 func _physics_process(delta):
 	if get_contact_count() >= 1:
 		$"../canJumpDelay".start(0.2)
 		
 	if Input.is_action_pressed("restart"):
-		freeze = true
-		global_position.y = 80
-		global_position.x = 192
-		linear_velocity = Vector2.ZERO
-		gravity_scale = 0
-		await get_tree().create_timer(0.1).timeout
-		gravity_scale = 1
-		freeze = false
+		restart()
 		
 	if get_contact_count() >= 1:
 		#await get_tree().create_timer(0.1).timeout
@@ -42,6 +44,9 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("ui_left"):
 		linear_velocity.x -= speed
+	
+	if Input.is_action_pressed("ui_accept"):
+		print(get_colliding_bodies())
 	
 	if linear_velocity.x > max_speed:
 		linear_velocity.x = max_speed
