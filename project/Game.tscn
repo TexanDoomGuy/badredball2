@@ -800,14 +800,14 @@ one_shot = true
 
 [node name="Label" type="Label" parent="."]
 z_index = 1
-offset_left = 258.0
-offset_top = 354.0
-offset_right = 318.0
-offset_bottom = 412.0
+offset_left = 256.0
+offset_top = 290.0
+offset_right = 316.0
+offset_bottom = 348.0
 theme_override_colors/font_color = Color(0, 0.815686, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_7g84m")
 theme_override_font_sizes/font_size = 42
-text = "1.1"
+text = "1.2"
 
 [node name="Border" parent="." instance=ExtResource("4_buycf")]
 position = Vector2(484, -203)
