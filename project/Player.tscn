@@ -14,3 +14,27 @@ shape = SubResource("CircleShape2D_l7ac3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_doi38")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+scale = Vector2(2.52, 2.52)
+shape = SubResource("CircleShape2D_l7ac3")
+debug_color = Color(0.946129, 5.48691e-06, 0.589246, 0.42)
+
+[node name="Celingcheck" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Celingcheck"]
+visible = false
+scale = Vector2(2.52, 2.52)
+shape = SubResource("CircleShape2D_l7ac3")
+debug_color = Color(0.946129, 5.48691e-06, 0.589246, 0.42)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Celingcheck" to="." method="_on_celingcheck_area_entered"]
+[connection signal="area_exited" from="Celingcheck" to="." method="_on_celingcheck_area_exited"]
