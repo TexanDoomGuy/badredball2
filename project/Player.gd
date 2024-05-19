@@ -7,25 +7,43 @@ var max_speed = 600
 var respawn_done = 0
 var spawn_point = Vector2(192, 80)
 
+var ocd_done = 0
+var ocd_started = 0
+
+@export var no_border = true
+@export var time_scale = 1.1
+
 var on_celing = 0
 	
 
 func _ready():
+	spawn_point = position
+	Engine.time_scale = time_scale
 	set_contact_monitor(true)#     These both allow detecting if there's coliistion with get_contact_count
 	set_max_contacts_reported(999) # if this isn't set, get_contact_count will return nothing
 
 func restart():
 	freeze = true
-	global_position.y = 80
-	global_position.x = 192
+	global_position = spawn_point
 	linear_velocity = Vector2.ZERO
 	gravity_scale = 0
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.2).timeout
 	gravity_scale = 1
 	freeze = false
+func _process(delta):
+	if get_contact_count() == 0:
+		await get_tree().create_timer(0.1).timeout
+		gravity_scale = 1
+		mass = 1
+	if ocd_done == 1:
+		ocd_done = 0
+		await get_tree().create_timer(0.1).timeout
+		on_celing = 0
 func _physics_process(delta):
+
 	if get_contact_count() >= 1:
 		$"../canJumpDelay".start(0.1)
+
 		
 	if Input.is_action_pressed("restart"):
 		restart()
@@ -44,18 +62,16 @@ func _physics_process(delta):
 	if Input.is_action_pressed("jump") && on_celing == 1:
 		mass = 0.01
 		gravity_scale = -2
-	if Input.is_action_pressed("jump") && on_celing == 0:
-		gravity_scale = 1
-		mass = 1		
+
 	if not Input.is_action_pressed("jump"):
 		gravity_scale = 1
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("right"):
 		linear_velocity.x += speed
 		
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("left"):
 		linear_velocity.x -= speed
 	
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_pressed("accept"):
 		print(get_colliding_bodies())
 	
 	if linear_velocity.x > max_speed:
@@ -87,7 +103,19 @@ func _on_respawn_delay_timeoutX():
 	freeze = 0
 
 func _on_area_2d_area_entered(area):
-	restart()
+	#linear_velocity.y = 100	
+	#await get_tree().create_timer(0.05).timeout
+	#linear_velocity = Vector2.ZERO	
+	if no_border == false:
+		freeze = true
+		await get_tree().create_timer(0.05).timeout
+		$"../Camera2D".position_smoothing_enabled = false
+		global_position = spawn_point
+		$"../Camera2D".position_smoothing_enabled = true		
+		gravity_scale = 0
+		await get_tree().create_timer(0.2).timeout
+		gravity_scale = 1
+		freeze = false
 
 
 func _on_celingcheck_area_entered(area):
@@ -95,5 +123,10 @@ func _on_celingcheck_area_entered(area):
 
 
 func _on_celingcheck_area_exited(area):
-	on_celing = 0
+	ocd_done = 1
+	ocd_started = 0
 	
+
+
+func _on_on_celing_delay_timeout():
+	on_celing = 0
