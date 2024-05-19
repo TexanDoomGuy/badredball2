@@ -11,14 +11,13 @@ var ocd_done = 0
 var ocd_started = 0
 
 @export var no_border = true
-@export var time_scale = 1.1
+@export var time_scale = 0.25
 
 var on_celing = 0
 	
 
 func _ready():
 	spawn_point = position
-	Engine.time_scale = time_scale
 	set_contact_monitor(true)#     These both allow detecting if there's coliistion with get_contact_count
 	set_max_contacts_reported(999) # if this isn't set, get_contact_count will return nothing
 
@@ -30,7 +29,9 @@ func restart():
 	await get_tree().create_timer(0.2).timeout
 	gravity_scale = 1
 	freeze = false
+	
 func _process(delta):
+	Engine.time_scale = time_scale	
 	if get_contact_count() == 0:
 		await get_tree().create_timer(0.1).timeout
 		gravity_scale = 1
@@ -60,9 +61,9 @@ func _physics_process(delta):
 			can_jump = 0
 			$"../JumpDelay".start(0.1)
 	if Input.is_action_pressed("jump") && on_celing == 1:
-		mass = 0.01
-		gravity_scale = -2
-
+		mass = 100
+		gravity_scale = -1
+		linear_velocity.y = -100
 	if not Input.is_action_pressed("jump"):
 		gravity_scale = 1
 	if Input.is_action_pressed("right"):
@@ -71,7 +72,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("left"):
 		linear_velocity.x -= speed
 	
-	if Input.is_action_pressed("accept"):
+	if Input.is_action_pressed("ui_accept"):
 		print(get_colliding_bodies())
 	
 	if linear_velocity.x > max_speed:
@@ -130,3 +131,8 @@ func _on_celingcheck_area_exited(area):
 
 func _on_on_celing_delay_timeout():
 	on_celing = 0
+
+
+func _on_celingcheck_2_area_entered(area):
+	if Input.is_action_pressed("jump"):
+		linear_velocity.y = -250

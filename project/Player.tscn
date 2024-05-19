@@ -35,6 +35,17 @@ scale = Vector2(2.52, 2.52)
 shape = SubResource("CircleShape2D_l7ac3")
 debug_color = Color(0.946129, 5.48691e-06, 0.589246, 0.42)
 
+[node name="Celingcheck2" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Celingcheck2"]
+visible = false
+scale = Vector2(2.52, 2.52)
+shape = SubResource("CircleShape2D_l7ac3")
+debug_color = Color(0.946129, 5.48691e-06, 0.589246, 0.42)
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Celingcheck" to="." method="_on_celingcheck_area_entered"]
 [connection signal="area_exited" from="Celingcheck" to="." method="_on_celingcheck_area_exited"]
+[connection signal="area_entered" from="Celingcheck2" to="." method="_on_celingcheck_2_area_entered"]
