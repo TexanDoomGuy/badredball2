@@ -1,3 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
 gh_pages/
+/build/Windows
