@@ -61,9 +61,8 @@ func _physics_process(delta):
 			can_jump = 0
 			$"../JumpDelay".start(0.1)
 	if Input.is_action_pressed("jump") && on_celing == 1:
-		mass = 100
+		mass = 100000000
 		gravity_scale = -1
-		linear_velocity.y = -100
 	if not Input.is_action_pressed("jump"):
 		gravity_scale = 1
 	if Input.is_action_pressed("right"):
@@ -136,3 +135,12 @@ func _on_on_celing_delay_timeout():
 func _on_celingcheck_2_area_entered(area):
 	if Input.is_action_pressed("jump"):
 		linear_velocity.y = -250
+
+
+func _on_ceiling_area_entered(area):
+	on_celing = 1
+
+
+func _on_ceiling_area_exited(area):
+	ocd_done = 1
+	ocd_started = 0
