@@ -1,10 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://8y03fgx8jxjx"]
+[gd_scene load_steps=22 format=3 uid="uid://8y03fgx8jxjx"]
 
 [ext_resource type="PackedScene" uid="uid://mc81any4af4j" path="res://Player.tscn" id="1_08p2q"]
 [ext_resource type="PackedScene" uid="uid://bat21mcmix3gp" path="res://border.tscn" id="4_buycf"]
 [ext_resource type="PackedScene" uid="uid://cautx3p4rswfo" path="res://ceilingthing2.tscn" id="4_d3jog"]
 [ext_resource type="Texture2D" uid="uid://crlwi2b8t22yd" path="res://the sickest sprite sheet.png" id="4_rm4p5"]
 [ext_resource type="PackedScene" uid="uid://dqj82bcygc871" path="res://ceiling.tscn" id="5_2rkhn"]
+[ext_resource type="Texture2D" uid="uid://d264yldybgtra" path="res://shading.png" id="7_77lq3"]
+[ext_resource type="PackedScene" uid="uid://bq635tpmmlyxs" path="res://end.tscn" id="8_uy0cb"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="9_gly6x"]
 
 [sub_resource type="SystemFont" id="SystemFont_7g84m"]
@@ -930,24 +932,27 @@ no_border = false
 time_scale = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(801, -425)
+position = Vector2(454, 58)
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 script = ExtResource("9_gly6x")
 
 [node name="Label" type="Label" parent="Camera2D"]
+visible = false
 offset_left = -512.0
 offset_top = -256.0
 offset_right = -472.0
 offset_bottom = -233.0
 
 [node name="Label2" type="Label" parent="Camera2D"]
+visible = false
 offset_left = -512.0
 offset_top = -232.0
 offset_right = -472.0
 offset_bottom = -209.0
 
 [node name="Label3" type="Label" parent="Camera2D"]
+visible = false
 offset_left = -512.0
 offset_top = -210.0
 offset_right = -472.0
@@ -1017,6 +1022,24 @@ collision_mask = 4
 position = Vector2(985.836, 227.607)
 rotation = -0.471239
 shape = SubResource("RectangleShape2D_l4xcy")
+
+[node name="Shading" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(453, 60)
+texture = ExtResource("7_77lq3")
+
+[node name="Finish" parent="." instance=ExtResource("8_uy0cb")]
+position = Vector2(258, -87)
+scale = Vector2(2.39945, 2.39945)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 326.0
+offset_top = -106.0
+offset_right = 579.0
+offset_bottom = -31.0
+text = "Get a feel for the controls before you touch this green thing to go to the next level!"
+autowrap_mode = 3
 
 [connection signal="timeout" from="JumpDelay" to="Player" method="_on_jump_delay_timeout"]
 [connection signal="timeout" from="canJumpDelay" to="Player" method="_on_can_jump_delay_timeout"]

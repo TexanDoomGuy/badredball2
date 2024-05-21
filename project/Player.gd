@@ -42,6 +42,8 @@ func _process(delta):
 		on_celing = 0
 func _physics_process(delta):
 
+	$"../Shading".position = position
+	
 	if get_contact_count() >= 1:
 		$"../canJumpDelay".start(0.1)
 
@@ -53,11 +55,10 @@ func _physics_process(delta):
 		#await get_tree().create_timer(0.1).timeout
 		can_jump = 1
 		
-	if Input.is_action_pressed("jump") && can_jump == 1 && jump_delay == 0:
+	if Input.is_action_pressed("jump") && can_jump == 1:
 		if on_celing == 0:
 			if not linear_velocity.y < -300:
 				linear_velocity.y = jump_force
-			jump_delay = 1
 			can_jump = 0
 			$"../JumpDelay".start(0.1)
 	if Input.is_action_pressed("jump") && on_celing == 1:
