@@ -60,7 +60,6 @@ func _physics_process(delta):
 			if not linear_velocity.y < -300:
 				linear_velocity.y = jump_force
 			can_jump = 0
-			$"../JumpDelay".start(0.1)
 	if Input.is_action_pressed("jump") && on_celing == 1:
 		mass = 100000000
 		gravity_scale = -1

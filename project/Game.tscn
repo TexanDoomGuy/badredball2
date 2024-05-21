@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://8y03fgx8jxjx"]
+[gd_scene load_steps=23 format=3 uid="uid://8y03fgx8jxjx"]
 
 [ext_resource type="PackedScene" uid="uid://mc81any4af4j" path="res://Player.tscn" id="1_08p2q"]
+[ext_resource type="Script" path="res://Game.gd" id="1_gux4p"]
 [ext_resource type="PackedScene" uid="uid://bat21mcmix3gp" path="res://border.tscn" id="4_buycf"]
 [ext_resource type="PackedScene" uid="uid://cautx3p4rswfo" path="res://ceilingthing2.tscn" id="4_d3jog"]
 [ext_resource type="Texture2D" uid="uid://crlwi2b8t22yd" path="res://the sickest sprite sheet.png" id="4_rm4p5"]
@@ -888,6 +889,7 @@ size = Vector2(624, 16)
 size = Vector2(264.488, 16)
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_gux4p")
 
 [node name="JumpDelay" type="Timer" parent="."]
 process_callback = 0
@@ -938,25 +940,33 @@ position_smoothing_speed = 20.0
 script = ExtResource("9_gly6x")
 
 [node name="Label" type="Label" parent="Camera2D"]
-visible = false
 offset_left = -512.0
 offset_top = -256.0
 offset_right = -472.0
 offset_bottom = -233.0
+text = "a"
 
 [node name="Label2" type="Label" parent="Camera2D"]
-visible = false
 offset_left = -512.0
 offset_top = -232.0
 offset_right = -472.0
 offset_bottom = -209.0
+text = "a"
 
 [node name="Label3" type="Label" parent="Camera2D"]
-visible = false
 offset_left = -512.0
 offset_top = -210.0
 offset_right = -472.0
 offset_bottom = -187.0
+text = "a"
+
+[node name="Errorm" type="Label" parent="Camera2D"]
+offset_left = -512.0
+offset_top = -190.0
+offset_right = -472.0
+offset_bottom = -167.0
+theme_override_colors/font_color = Color(1, 0, 0, 0)
+text = "a"
 
 [node name="ceiling" type="Area2D" parent="."]
 collision_layer = 4
