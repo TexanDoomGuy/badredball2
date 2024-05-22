@@ -13,7 +13,7 @@ const filestart = "res://Level "
 var errordone = 1
 
 func printerror(errorm: String):
-	$"../Player".linear_velocity *= Vector2(-10,-10)	
+	$"../Player".linear_velocity *= Vector2(-10,-1)	
 	if errordone == 1:
 		errordone = 0
 		errorme.add_theme_color_override("font_color",Color(1,0,0,1))
