@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://ekf6harn76cv"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://uky7oj8dyeta"]
 
 [ext_resource type="Texture2D" uid="uid://crlwi2b8t22yd" path="res://the sickest sprite sheet.png" id="1_4u4bu"]
 [ext_resource type="PackedScene" uid="uid://bat21mcmix3gp" path="res://border.tscn" id="2_e6gqf"]
