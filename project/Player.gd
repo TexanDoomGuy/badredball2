@@ -7,6 +7,8 @@ var max_speed = 600
 var respawn_done = 0
 var spawn_point = Vector2(192, 80)
 
+var l_pp = Vector2(6969,-420420)
+
 var ocd_done = 0
 var ocd_started = 0
 
@@ -21,10 +23,12 @@ func _ready():
 	set_contact_monitor(true)#     These both allow detecting if there's coliistion with get_contact_count
 	set_max_contacts_reported(999) # if this isn't set, get_contact_count will return nothing
 
-func restart():
+func restart(loc):
 	freeze = true
-	global_position = spawn_point
-	linear_velocity = Vector2.ZERO
+	await get_tree().create_timer(0.05).timeout
+	$"../Camera2D".position_smoothing_enabled = false
+	global_position = loc
+	$"../Camera2D".position_smoothing_enabled = true		
 	gravity_scale = 0
 	await get_tree().create_timer(0.2).timeout
 	gravity_scale = 1
@@ -49,7 +53,7 @@ func _physics_process(delta):
 
 		
 	if Input.is_action_pressed("restart"):
-		restart()
+		restart(spawn_point)
 		
 	if get_contact_count() >= 1:
 		#await get_tree().create_timer(0.1).timeout
@@ -70,9 +74,6 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("left"):
 		linear_velocity.x -= speed
-	
-	if Input.is_action_pressed("ui_accept"):
-		print(get_colliding_bodies())
 	
 	if linear_velocity.x > max_speed:
 		linear_velocity.x = max_speed

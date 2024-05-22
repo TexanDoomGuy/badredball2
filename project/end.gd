@@ -1,21 +1,22 @@
 extends Area2D
 
-@export var level = "Level1"
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+@onready var player = $"../Player"
+var level = 1
 
 func _on_area_entered(area):
-	pass # Replace with function body.
-	var error = get_tree().change_scene_to_file("res://"+level)
-	if error == OK:
-		get_tree().change_scene_to_file("res://"+level)
+	var errorr = get_tree().change_scene_to_file("res://Level "+str(level)+".tscn")
+	print(errorr)
+	if errorr != OK:
+		$"..".printerror('Uh oh spaghettios. Level '+"res://Level "+str(level)+".tscn"+" doesn't"+' exist!	Error code: '+str(errorr))
 	else:
-		$"..".printerror("Uh oh spaghettios. Trying to load a level that doesn't exist!")
+		$"../Camera2D/Control".endscreenhideornot = 1
+		$"../pain".start(5)
+		await $"../pain".timeout
+		$"../Camera2D/Control".endscreenhideornot = 0
+		get_tree().change_scene_to_file("res://Level "+str(level)+".tscn")
+	
+
+
+func _on_pain_timeout():
+	pass # Replace with function body.
+	print("ass")
