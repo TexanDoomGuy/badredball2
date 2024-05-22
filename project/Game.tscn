@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://8y03fgx8jxjx"]
 
 [ext_resource type="PackedScene" uid="uid://mc81any4af4j" path="res://Player.tscn" id="1_08p2q"]
-[ext_resource type="TileSet" uid="uid://cfli0t8odj23e" path="res://Tutor.tres" id="1_k2sx5"]
+[ext_resource type="TileSet" uid="uid://dgdqijah7b0y1" path="res://Tutor.tres" id="1_k2sx5"]
 [ext_resource type="Script" path="res://Game.gd" id="1_v4pje"]
 [ext_resource type="PackedScene" uid="uid://cn4io2x5sourj" path="res://endscreen.tscn" id="5_0lrfp"]
 [ext_resource type="Texture2D" uid="uid://d264yldybgtra" path="res://shading.png" id="7_77lq3"]
@@ -41,7 +41,7 @@ size = Vector2(264.488, 16)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_v4pje")
-overide_level = 2
+overide_level = -1
 
 [node name="JumpDelay" type="Timer" parent="."]
 process_callback = 0
@@ -79,7 +79,7 @@ layer_1/tile_data = PackedInt32Array()
 layer_2/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("1_08p2q")]
-position = Vector2(452, 58)
+position = Vector2(467, 206)
 collision_priority = 2.0
 physics_material_override = SubResource("PhysicsMaterial_jk638")
 no_border = false
