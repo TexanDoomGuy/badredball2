@@ -5,6 +5,8 @@ var current_scene = "null"
 var next_level = "null"
 var error = 696969
 
+
+
 @export var No_levels_after = 1
 
 const filestart = "res://Level "

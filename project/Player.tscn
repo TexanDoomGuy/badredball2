@@ -117,6 +117,16 @@ scale = Vector2(2.52, 2.52)
 shape = SubResource("CircleShape2D_l7ac3")
 debug_color = Color(0.946129, 5.48691e-06, 0.589246, 0.42)
 
+[node name="Bouncey" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncey"]
+visible = false
+scale = Vector2(2.52, 2.52)
+shape = SubResource("CircleShape2D_l7ac3")
+debug_color = Color(0.946129, 5.48691e-06, 0.589246, 0.42)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 texture_filter = 1
@@ -136,3 +146,4 @@ texture = ExtResource("4_2ns4n")
 [connection signal="area_exited" from="Celingcheck" to="." method="_on_celingcheck_area_exited"]
 [connection signal="area_entered" from="Celingcheck2" to="." method="_on_celingcheck_2_area_entered"]
 [connection signal="area_entered" from="finish check" to="." method="_on_celingcheck_2_area_entered"]
+[connection signal="area_entered" from="Bouncey" to="." method="_on_bouncey_area_entered"]

@@ -145,3 +145,7 @@ func _on_ceiling_area_entered(area):
 func _on_ceiling_area_exited(area):
 	ocd_done = 1
 	ocd_started = 0
+
+
+func _on_bouncey_area_entered(area):
+	linear_velocity *= Vector2(-10,-1)

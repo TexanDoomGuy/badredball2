@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://8y03fgx8jxjx"]
+[gd_scene load_steps=18 format=3 uid="uid://8y03fgx8jxjx"]
 
 [ext_resource type="PackedScene" uid="uid://mc81any4af4j" path="res://Player.tscn" id="1_08p2q"]
 [ext_resource type="TileSet" uid="uid://cfli0t8odj23e" path="res://Tutor.tres" id="1_k2sx5"]
-[ext_resource type="PackedScene" path="res://endscreen.tscn" id="5_0lrfp"]
+[ext_resource type="Script" path="res://Game.gd" id="1_v4pje"]
+[ext_resource type="PackedScene" uid="uid://cn4io2x5sourj" path="res://endscreen.tscn" id="5_0lrfp"]
 [ext_resource type="Texture2D" uid="uid://d264yldybgtra" path="res://shading.png" id="7_77lq3"]
 [ext_resource type="PackedScene" uid="uid://bq635tpmmlyxs" path="res://end.tscn" id="8_uy0cb"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="9_gly6x"]
@@ -39,6 +40,8 @@ size = Vector2(624, 16)
 size = Vector2(264.488, 16)
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_v4pje")
+overide_level = 2
 
 [node name="JumpDelay" type="Timer" parent="."]
 process_callback = 0
@@ -64,7 +67,7 @@ offset_bottom = 348.0
 theme_override_colors/font_color = Color(0, 0.815686, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_7g84m")
 theme_override_font_sizes/font_size = 42
-text = "1.4 prerelease PP"
+text = "1.4 prerelease 3"
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
