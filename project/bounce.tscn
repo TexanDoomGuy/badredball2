@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://do0tpdonbkt7m"]
+[gd_scene load_steps=3 format=3 uid="uid://do0tpdonbkt7m"]
+
+[sub_resource type="GDScript" id="GDScript_ilvan"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_js5jy"]
 size = Vector2(16, 16)
@@ -6,8 +8,11 @@ size = Vector2(16, 16)
 [node name="bounce" type="Area2D"]
 collision_layer = 64
 collision_mask = 64
+script = SubResource("GDScript_ilvan")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_js5jy")
 debug_color = Color(0, 1, 0, 0.419608)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
