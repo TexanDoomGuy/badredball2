@@ -13,7 +13,7 @@ var ocd_done = 0
 var ocd_started = 0
 
 @export var no_border = true
-@export var time_scale = 0.25
+var time_scale = 1
 
 var on_celing = 0
 	
@@ -30,7 +30,7 @@ func restart(loc):
 	global_position = loc
 	$"../Camera2D".position_smoothing_enabled = true		
 	gravity_scale = 0
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.05).timeout
 	gravity_scale = 1
 	freeze = false
 	
@@ -62,7 +62,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("jump") && can_jump == 1:
 		if on_celing == 0:
 			if not linear_velocity.y < -300:
-				linear_velocity.y = jump_force
+				linear_velocity.y += jump_force
 			can_jump = 0
 	if Input.is_action_pressed("jump") && on_celing == 1:
 		mass = 100000000
@@ -80,10 +80,12 @@ func _physics_process(delta):
 	elif linear_velocity.x < -max_speed:
 		linear_velocity.x = -max_speed
 	
-	$"../Camera2D/Label".text = str(linear_velocity) #Just changes a label to equal the velocity.
-	$"../Camera2D/Label2".text = str(position)
-	$"../Camera2D/Label3".text = str(on_celing)	
-
+	$"../Camera2D/Label".text = "speed = "+str(linear_velocity) #Just changes a label to equal the velocity.
+	$"../Camera2D/Label2".text = "position = "+str(position)
+	if can_jump == 1:
+		$"../Camera2D/Label3".text = "can jump = True"	
+	if can_jump == 0:
+		$"../Camera2D/Label3".text = "can jump = False"	
 
 func _on_jump_delay_timeout():
 	jump_delay = 0
@@ -149,6 +151,8 @@ func _on_ceiling_area_exited(area):
 
 func _on_bouncey_area_entered(area):
 	if linear_velocity.y < 0:
-		linear_velocity *= Vector2(1,-1) + Vector2(0,100)
+		linear_velocity *= Vector2(1,-1)
+		linear_velocity.y += 50
 	else:
-		linear_velocity *= Vector2(1,-1) - Vector2(0,100)
+		linear_velocity *= Vector2(1,-1)
+		linear_velocity.y -= 50

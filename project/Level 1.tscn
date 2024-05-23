@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://pdmo0ka1yk7c"]
+[gd_scene load_steps=13 format=3 uid="uid://e6y73rjgdwuw"]
 
 [ext_resource type="Script" path="res://Level1.gd" id="1_b37lp"]
-[ext_resource type="TileSet" uid="uid://1hs8pnodw1js" path="res://level 12.tres" id="2_bwnxf"]
+[ext_resource type="TileSet" uid="uid://clqx32pwn4yrg" path="res://level 12.tres" id="2_bwnxf"]
 [ext_resource type="PackedScene" uid="uid://mc81any4af4j" path="res://Player.tscn" id="3_rhquq"]
 [ext_resource type="Texture2D" uid="uid://d264yldybgtra" path="res://shading.png" id="4_sbmhf"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="6_c5330"]
@@ -56,7 +56,6 @@ position = Vector2(283, -157)
 collision_priority = 2.0
 physics_material_override = SubResource("PhysicsMaterial_24mtl")
 no_border = false
-time_scale = 1.0
 
 [node name="Shading" type="Sprite2D" parent="."]
 texture_filter = 1
