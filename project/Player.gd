@@ -151,10 +151,10 @@ func _on_ceiling_area_exited(area):
 
 func _on_bouncey_area_entered(area):
 	if linear_velocity.y < 0:
-		linear_velocity *= Vector2(-10,-1)
+		linear_velocity *= Vector2(-1,-1)
 		linear_velocity.y += 50
 		#linear_velocity.x += 300
 	else:
-		linear_velocity *= Vector2(-10,-1)
+		linear_velocity *= Vector2(-1,-1)
 		linear_velocity.y -= 50
 		#linear_velocity.x -= 300

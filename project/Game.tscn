@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://8y03fgx8jxjx"]
 
 [ext_resource type="PackedScene" uid="uid://mc81any4af4j" path="res://Player.tscn" id="1_08p2q"]
-[ext_resource type="TileSet" uid="uid://dgdqijah7b0y1" path="res://Tutor.tres" id="1_k2sx5"]
+[ext_resource type="TileSet" uid="uid://cfli0t8odj23e" path="res://Tutor.tres" id="1_k2sx5"]
 [ext_resource type="Script" path="res://Game.gd" id="1_v4pje"]
 [ext_resource type="PackedScene" uid="uid://cn4io2x5sourj" path="res://endscreen.tscn" id="5_0lrfp"]
 [ext_resource type="Texture2D" uid="uid://d264yldybgtra" path="res://shading.png" id="7_77lq3"]

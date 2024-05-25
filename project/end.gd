@@ -7,7 +7,7 @@ var error = 696969
 
 
 
-@export var No_levels_after = 1
+var No_levels_after = 3
 
 const filestart = "res://Level "
 
