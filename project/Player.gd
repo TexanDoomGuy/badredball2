@@ -46,15 +46,11 @@ func _physics_process(delta):
 	$"../Shading".position = position
 	
 	if get_contact_count() >= 1:
-		$"../canJumpDelay".start(0.1)
-
+		can_jump=1
 		
 	if Input.is_action_pressed("restart"):
 		restart(spawn_point)
 		
-	if get_contact_count() >= 1:
-		#await get_tree().create_timer(0.1).timeout
-		can_jump = 1
 		
 	if Input.is_action_pressed("jump") && can_jump == 1:
 		if on_floor == 1:
