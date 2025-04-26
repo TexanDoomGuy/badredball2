@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=4 uid="uid://dtauv6rjjfrmx"]
 
-[ext_resource type="Script" path="res://level 2.gd" id="1_dgc8e"]
+[ext_resource type="Script" uid="uid://cwus2yxa3te6x" path="res://level 2.gd" id="1_dgc8e"]
 [ext_resource type="TileSet" uid="uid://cfli0t8odj23e" path="res://Tutor.tres" id="2_jupbv"]
 [ext_resource type="PackedScene" uid="uid://mc81any4af4j" path="res://Player.tscn" id="6_yfrwn"]
 [ext_resource type="Texture2D" uid="uid://d264yldybgtra" path="res://shading.png" id="7_wi5xe"]
-[ext_resource type="Script" path="res://Camera2D.gd" id="8_xnbpw"]
+[ext_resource type="Script" uid="uid://bu86axqdcup1k" path="res://Camera2D.gd" id="8_xnbpw"]
 [ext_resource type="PackedScene" uid="uid://cn4io2x5sourj" path="res://endscreen.tscn" id="9_0758k"]
 [ext_resource type="PackedScene" uid="uid://bq635tpmmlyxs" path="res://end.tscn" id="10_qs5bg"]
 

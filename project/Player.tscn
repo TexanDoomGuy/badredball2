@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://mc81any4af4j"]
+[gd_scene load_steps=16 format=3 uid="uid://mc81any4af4j"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_5y07l"]
+[ext_resource type="Script" uid="uid://by0u1n6owjjx8" path="res://Player.gd" id="1_5y07l"]
 [ext_resource type="Texture2D" uid="uid://b3yan4m6vkaey" path="res://Face2.png" id="2_doi38"]
 [ext_resource type="Texture2D" uid="uid://dtk1xi86rm5jf" path="res://New Ball.png" id="3_6rgeh"]
 [ext_resource type="Texture2D" uid="uid://bnp5e1hurxgmr" path="res://mouth.png" id="4_2ns4n"]
-[ext_resource type="Script" path="res://AnimatedSprite2D.gd" id="4_enca5"]
+[ext_resource type="Script" uid="uid://bsbdgl13lshkk" path="res://AnimatedSprite2D.gd" id="4_enca5"]
+[ext_resource type="Script" uid="uid://dw3wcwxj3oouh" path="res://ray_cast_2d.gd" id="6_tdg3f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7ac3"]
 
@@ -66,6 +67,8 @@ animations = [{
 }]
 
 [node name="Player" type="RigidBody2D"]
+contact_monitor = true
+max_contacts_reported = 3
 script = ExtResource("1_5y07l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -82,36 +85,6 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
-scale = Vector2(2.52, 2.52)
-shape = SubResource("CircleShape2D_l7ac3")
-debug_color = Color(0.946129, 5.48691e-06, 0.589246, 0.42)
-
-[node name="Celingcheck" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Celingcheck"]
-visible = false
-scale = Vector2(2.52, 2.52)
-shape = SubResource("CircleShape2D_l7ac3")
-debug_color = Color(0.946129, 5.48691e-06, 0.589246, 0.42)
-
-[node name="Celingcheck2" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Celingcheck2"]
-visible = false
-scale = Vector2(2.52, 2.52)
-shape = SubResource("CircleShape2D_l7ac3")
-debug_color = Color(0.946129, 5.48691e-06, 0.589246, 0.42)
-
-[node name="finish check" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="finish check"]
 visible = false
 scale = Vector2(2.52, 2.52)
 shape = SubResource("CircleShape2D_l7ac3")
@@ -141,9 +114,10 @@ texture_filter = 1
 position = Vector2(1, 2)
 texture = ExtResource("4_2ns4n")
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -26)
+hit_from_inside = true
+script = ExtResource("6_tdg3f")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="Celingcheck" to="." method="_on_celingcheck_area_entered"]
-[connection signal="area_exited" from="Celingcheck" to="." method="_on_celingcheck_area_exited"]
-[connection signal="area_entered" from="Celingcheck2" to="." method="_on_celingcheck_2_area_entered"]
-[connection signal="area_entered" from="finish check" to="." method="_on_celingcheck_2_area_entered"]
 [connection signal="area_entered" from="Bouncey" to="." method="_on_bouncey_area_entered"]

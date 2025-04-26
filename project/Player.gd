@@ -15,8 +15,7 @@ var ocd_started = 0
 @export var no_border = true
 var time_scale = 1
 
-var on_celing = 0
-	
+var on_floor = 0
 
 func _ready():
 	spawn_point = position
@@ -40,11 +39,9 @@ func _process(delta):
 		await get_tree().create_timer(0.1).timeout
 		gravity_scale = 1
 		mass = 1
-	if ocd_done == 1:
-		ocd_done = 0
-		await get_tree().create_timer(0.1).timeout
-		on_celing = 0
+
 func _physics_process(delta):
+	
 
 	$"../Shading".position = position
 	
@@ -60,11 +57,11 @@ func _physics_process(delta):
 		can_jump = 1
 		
 	if Input.is_action_pressed("jump") && can_jump == 1:
-		if on_celing == 0:
+		if on_floor == 1:
 			if not linear_velocity.y < -300:
 				linear_velocity.y += jump_force
 			can_jump = 0
-	if Input.is_action_pressed("jump") && on_celing == 1:
+	if Input.is_action_pressed("jump") && on_floor == -1:
 		mass = 100000000
 		gravity_scale = -1
 	if not Input.is_action_pressed("jump"):
@@ -119,35 +116,6 @@ func _on_area_2d_area_entered(area):
 		await get_tree().create_timer(0.2).timeout
 		gravity_scale = 1
 		freeze = false
-
-
-func _on_celingcheck_area_entered(area):
-	on_celing = 1
-
-
-func _on_celingcheck_area_exited(area):
-	ocd_done = 1
-	ocd_started = 0
-	
-
-
-func _on_on_celing_delay_timeout():
-	on_celing = 0
-
-
-func _on_celingcheck_2_area_entered(area):
-	if Input.is_action_pressed("jump"):
-		linear_velocity.y = -250
-
-
-func _on_ceiling_area_entered(area):
-	on_celing = 1
-
-
-func _on_ceiling_area_exited(area):
-	ocd_done = 1
-	ocd_started = 0
-
 
 func _on_bouncey_area_entered(area):
 	if linear_velocity.y < 0:

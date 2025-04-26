@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bq635tpmmlyxs"]
 
-[ext_resource type="Script" path="res://end.gd" id="1_y637w"]
+[ext_resource type="Script" uid="uid://dlar2ipynpung" path="res://end.gd" id="1_y637w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bfkj1"]
 size = Vector2(18, 42)
 
 [node name="Finish" type="Area2D"]
-collision_layer = 16
-collision_mask = 16
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_y637w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

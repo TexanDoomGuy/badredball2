@@ -1,28 +1,16 @@
-[gd_scene load_steps=13 format=4 uid="uid://e6y73rjgdwuw"]
+[gd_scene load_steps=9 format=4 uid="uid://e6y73rjgdwuw"]
 
-[ext_resource type="Script" path="res://Level1.gd" id="1_b37lp"]
+[ext_resource type="Script" uid="uid://b4bb4m6wg754e" path="res://Level1.gd" id="1_b37lp"]
 [ext_resource type="TileSet" uid="uid://cfli0t8odj23e" path="res://Tutor.tres" id="2_d3uu6"]
 [ext_resource type="PackedScene" uid="uid://mc81any4af4j" path="res://Player.tscn" id="3_rhquq"]
 [ext_resource type="Texture2D" uid="uid://d264yldybgtra" path="res://shading.png" id="4_sbmhf"]
-[ext_resource type="Script" path="res://Camera2D.gd" id="6_c5330"]
+[ext_resource type="Script" uid="uid://bu86axqdcup1k" path="res://Camera2D.gd" id="6_c5330"]
 [ext_resource type="PackedScene" uid="uid://bq635tpmmlyxs" path="res://end.tscn" id="7_omopo"]
 [ext_resource type="PackedScene" uid="uid://cn4io2x5sourj" path="res://endscreen.tscn" id="7_vf0kg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_24mtl"]
 bounce = 98.4
 absorbent = true
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7k3p"]
-size = Vector2(123.875, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7wnv"]
-size = Vector2(401, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7cyg"]
-size = Vector2(272.5, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hf2pq"]
-size = Vector2(65.25, 16)
 
 [node name="Level 1" type="Node2D"]
 script = ExtResource("1_b37lp")
@@ -63,12 +51,6 @@ texture_filter = 1
 texture_repeat = 1
 position = Vector2(180, -194)
 texture = ExtResource("4_sbmhf")
-
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Yay I made level loading
-first, I thought I would hate this. I didn't, until I did."
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(454, 58)
@@ -115,36 +97,3 @@ offset_bottom = -360.0
 [node name="Finish" parent="." instance=ExtResource("7_omopo")]
 position = Vector2(1068, -727)
 scale = Vector2(2.39945, 2.39945)
-
-[node name="ceiling8" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ceiling8"]
-position = Vector2(613.265, -198.616)
-rotation = -1.10589
-shape = SubResource("RectangleShape2D_p7k3p")
-
-[node name="ceiling7" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ceiling7"]
-position = Vector2(440.5, 40)
-shape = SubResource("RectangleShape2D_m7wnv")
-
-[node name="ceiling9" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ceiling9"]
-position = Vector2(951.75, -568)
-shape = SubResource("RectangleShape2D_e7cyg")
-
-[node name="ceiling10" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ceiling10"]
-position = Vector2(784.375, -408)
-shape = SubResource("RectangleShape2D_hf2pq")

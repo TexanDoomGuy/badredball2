@@ -2,8 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://crlwi2b8t22yd" path="res://the sickest sprite sheet.png" id="1_wnr3b"]
 [ext_resource type="PackedScene" uid="uid://bat21mcmix3gp" path="res://border.tscn" id="2_gu17m"]
-[ext_resource type="PackedScene" uid="uid://dqj82bcygc871" path="res://ceiling.tscn" id="3_0arf1"]
-[ext_resource type="PackedScene" uid="uid://cautx3p4rswfo" path="res://ceilingthing2.tscn" id="4_j0mlb"]
 [ext_resource type="PackedScene" uid="uid://do0tpdonbkt7m" path="res://bounce.tscn" id="5_1sm74"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gs1af"]
@@ -411,10 +409,25 @@ texture = ExtResource("1_wnr3b")
 1:11/0 = 0
 0:11/0 = 0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jysjy"]
+size = Vector2(288, 16)
+
+[sub_resource type="PackedScene" id="PackedScene_ounu2"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Area2D", "position", "collision_layer", "collision_mask", "CollisionShape2D", "shape", "debug_color", "ColorRect", "visible", "offset_left", "offset_top", "offset_right", "offset_bottom", "color"),
+"node_count": 3,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 0, 0, -1, 3, 1, 0, 2, 1, 3, 1, 0, 0, 0, 4, 4, -1, 3, 1, 2, 5, 3, 6, 4, 0, 0, 0, 7, 7, -1, 6, 8, 5, 9, 6, 10, 7, 11, 8, 12, 9, 13, 10, 0),
+"variants": [Vector2(0, 8), 4, Vector2(0, -8), SubResource("RectangleShape2D_jysjy"), Color(0, 1, 1, 0.419608), false, -8.0, 2.0, 8.0, 20.0, Color(1, 1, 1, 0.14902)],
+"version": 3
+}
+
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_uvsdf"]
 scenes/1/scene = ExtResource("2_gu17m")
-scenes/2/scene = ExtResource("3_0arf1")
-scenes/3/scene = ExtResource("4_j0mlb")
+scenes/2/scene = SubResource("PackedScene_ounu2")
 scenes/4/scene = ExtResource("5_1sm74")
 
 [resource]
