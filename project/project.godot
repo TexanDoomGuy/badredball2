@@ -19,8 +19,8 @@ config/icon="res://Face2.png"
 
 [autoload]
 
-Game="*res://Game.tres"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+Game="*res://Game.gd"
 
 [display]
 
