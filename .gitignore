@@ -1,3 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
 gh_pages/
+project/export_presets.cfg
