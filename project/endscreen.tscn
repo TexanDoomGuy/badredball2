@@ -29,4 +29,6 @@ theme_override_font_sizes/normal_font_size = 54
 bbcode_enabled = true
 text = "[center]%Level% completed!.[/center]
 
-[center]Up next: %NextLevel%"
+[center]Up next: %NextLevel%
+
+[center]Time: %time%"

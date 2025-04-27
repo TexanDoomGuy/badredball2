@@ -1,16 +1,23 @@
-[gd_scene load_steps=9 format=4 uid="uid://fsknf4jpwoaa"]
+[gd_scene load_steps=11 format=4 uid="uid://fsknf4jpwoaa"]
 
 [ext_resource type="Script" uid="uid://b1ga4qnrfm6p2" path="res://Level 3.gd" id="1_4r2af"]
 [ext_resource type="TileSet" uid="uid://clqx32pwn4yrg" path="res://level 12.tres" id="2_kf8ir"]
 [ext_resource type="PackedScene" uid="uid://mc81any4af4j" path="res://Player.tscn" id="3_7bujp"]
 [ext_resource type="Texture2D" uid="uid://d264yldybgtra" path="res://shading.png" id="4_xie4e"]
-[ext_resource type="Script" uid="uid://bu86axqdcup1k" path="res://Camera2D.gd" id="5_sxpo6"]
-[ext_resource type="PackedScene" uid="uid://cn4io2x5sourj" path="res://endscreen.tscn" id="6_fhlpc"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_kf8ir"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_7bujp"]
 [ext_resource type="PackedScene" uid="uid://bq635tpmmlyxs" path="res://end.tscn" id="7_bdes7"]
+[ext_resource type="PackedScene" uid="uid://bkpsupi1rq2sm" path="res://camera.tscn" id="8_xie4e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_24mtl"]
 bounce = 98.4
 absorbent = true
+
+[sub_resource type="Resource" id="Resource_sxpo6"]
+script = ExtResource("7_7bujp")
+duration = 1.0
+transition = 0
+ease = 2
 
 [node name="Level 3" type="Node2D"]
 script = ExtResource("1_4r2af")
@@ -76,48 +83,23 @@ offset_right = 390.0
 offset_bottom = 76.0
 text = "Help"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(454, 58)
-position_smoothing_enabled = true
-position_smoothing_speed = 20.0
-script = ExtResource("5_sxpo6")
-
-[node name="Label" type="Label" parent="Camera2D"]
-offset_left = -512.0
-offset_top = -256.0
-offset_right = -472.0
-offset_bottom = -233.0
-text = "a"
-
-[node name="Label2" type="Label" parent="Camera2D"]
-offset_left = -512.0
-offset_top = -232.0
-offset_right = -472.0
-offset_bottom = -209.0
-text = "a"
-
-[node name="Label3" type="Label" parent="Camera2D"]
-offset_left = -512.0
-offset_top = -210.0
-offset_right = -472.0
-offset_bottom = -187.0
-text = "a"
-
-[node name="Errorm" type="Label" parent="Camera2D"]
-offset_left = -512.0
-offset_top = -190.0
-offset_right = -472.0
-offset_bottom = -167.0
-theme_override_colors/font_color = Color(1, 0, 0, 0)
-text = "a"
-
-[node name="Control" parent="Camera2D" instance=ExtResource("6_fhlpc")]
-visible = false
-offset_left = -640.0
-offset_top = -360.0
-offset_right = -640.0
-offset_bottom = -360.0
-
 [node name="Finish" parent="." instance=ExtResource("7_bdes7")]
 position = Vector2(1263, -690)
 scale = Vector2(2.39945, 2.39945)
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(1069, 173)
+script = ExtResource("6_kf8ir")
+follow_mode = 2
+follow_target = NodePath("../Player")
+tween_resource = SubResource("Resource_sxpo6")
+follow_damping = true
+follow_damping_value = Vector2(0.105, 0.305)
+dead_zone_width = 0.39
+dead_zone_height = 0.283
+show_viewfinder_in_play = true
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="Camera" parent="." instance=ExtResource("8_xie4e")]
+position = Vector2(326, -106)

@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkpsupi1rq2sm"]
+
+[ext_resource type="PackedScene" uid="uid://cn4io2x5sourj" path="res://endscreen.tscn" id="1_diie0"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_qqjab"]
+[ext_resource type="FontFile" uid="uid://dcc4chegcr77j" path="res://3270NERDFONT-REGULAR.TTF" id="3_qqjab"]
+
+[node name="Camera" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2(141, 312)
+process_callback = 0
+position_smoothing_speed = 20.0
+
+[node name="EndScreen" parent="Camera2D" instance=ExtResource("1_diie0")]
+visible = false
+offset_left = -640.0
+offset_top = -360.0
+offset_right = -640.0
+offset_bottom = -360.0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("2_qqjab")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="Control2" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -621.0
+offset_top = -341.0
+offset_right = 619.0
+offset_bottom = 339.0
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="Camera2D/Control2"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 23.0
+text = "a"
+
+[node name="Label2" type="Label" parent="Camera2D/Control2"]
+layout_mode = 1
+offset_top = 23.0
+offset_right = 40.0
+offset_bottom = 46.0
+text = "a"
+
+[node name="Label3" type="Label" parent="Camera2D/Control2"]
+layout_mode = 0
+offset_top = 46.0
+offset_right = 40.0
+offset_bottom = 69.0
+text = "a"
+
+[node name="Label4" type="Label" parent="Camera2D/Control2"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -155.0
+offset_top = -1.0
+offset_right = 473.0
+offset_bottom = 136.0
+grow_horizontal = 0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_qqjab")
+theme_override_font_sizes/font_size = 100
+text = "Time"
+
+[node name="Label5" type="Label" parent="Camera2D/Control2"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -155.0
+offset_top = 34.0
+offset_right = 473.0
+offset_bottom = 171.0
+grow_horizontal = 0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_qqjab")
+theme_override_font_sizes/font_size = 100
+text = "Fails:"
+
+[node name="Errorm" type="Label" parent="Camera2D/Control2"]
+layout_mode = 0
+offset_top = 92.0
+offset_right = 40.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(1, 0, 0, 0)
+text = "a"

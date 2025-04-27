@@ -11,7 +11,7 @@ var No_levels_after = 3
 
 const filestart = "res://Level "
 
-@onready var errorme = $"../Camera2D/Errorm"
+@onready var errorme = $"../Camera/Camera2D/Control2/Errorm"
 var errordone = 1
 
 func printerror(errorm: String):
