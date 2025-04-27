@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Export Game Job
     steps:
+      - name: Debug
+        run: echo github.event.inputs.tag_name
       - name: checkout
         uses: actions/checkout@v4
       - name: install wine
@@ -33,8 +35,6 @@ jobs:
           relative_export_path: ./build # move export output to this directory relative to git root
           archive_output: true
           wine_path: ${{ steps.wine_install.outputs.WINE_PATH }}
-      - name: Print something
-        run: echo github.event.inputs.tag_name
       - name: create release
         uses: ncipollo/release-action@v1.16.0
         with:
