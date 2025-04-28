@@ -1,6 +1,6 @@
 extends Area2D
-
-var next_level_number = 69
+## -1 for auto
+@export var next_level_number = -1 #-1 = Auto
 var current_scene = "null"
 var next_level = "null"
 var error = 696969
@@ -27,14 +27,20 @@ func printerror(errorm: String):
 func _on_area_entered(area):
 	current_scene = get_tree().current_scene.scene_file_path
 	print(current_scene)
-	if current_scene != "res://Game.tscn":
-		next_level_number = current_scene.to_int() + 1
-	else:
-		next_level_number = 1
-	if current_scene != "res://Game.tscn":
+	if next_level_number <= -1:
+		if current_scene != "res://Game.tscn":
+			next_level_number = current_scene.to_int() + 1
+		else:
+			next_level_number = 1
+		if current_scene != "res://Game.tscn":
+			next_level = filestart + str(next_level_number) + ".tscn"
+		else:
+			next_level = filestart+"1.tscn"
+	elif next_level_number >= 1:
 		next_level = filestart + str(next_level_number) + ".tscn"
 	else:
-		next_level = filestart+"1.tscn"
+		next_level = "res://Game.tscn"
+		
 	if  next_level_number > No_levels_after:
 		printerror("Can't load "+next_level+". It doesn't exist!")
 	else:

@@ -50,6 +50,8 @@ func _process(delta):
 	if time.y >= 60:
 		time.y -= 60
 		time.x+=1
+	if Input.is_action_just_pressed("level select"):
+		get_tree().change_scene_to_file("res://LevelSelect.tscn")
 
 
 func _physics_process(delta):
