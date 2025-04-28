@@ -224,7 +224,7 @@ offset_bottom = 348.0
 theme_override_colors/font_color = Color(0, 0.815686, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_7g84m")
 theme_override_font_sizes/font_size = 42
-text = "1.6.2"
+text = "1.6.3"
 
 [node name="Finish" parent="." instance=ExtResource("8_uy0cb")]
 position = Vector2(258, -87)
@@ -274,6 +274,7 @@ offset_bottom = 1107.0
 size_flags_horizontal = 4
 
 [node name="Panel" type="Panel" parent="ChangeLog"]
+layout_mode = 0
 offset_left = 4.0
 offset_top = 21.0
 offset_right = 603.0
@@ -318,7 +319,7 @@ allow_horizontal_scroll = false
 metadata/_custom_type_script = "uid://bgqglerkcylxx"
 
 [node name="VSplitContainer" type="Panel" parent="ChangeLog/SmoothScrollContainer"]
-custom_minimum_size = Vector2(590, 99999)
+custom_minimum_size = Vector2(600, 1465)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_wuoie")
@@ -368,8 +369,30 @@ Probably more that I forgot about
 
 - TexanDoomGuy
 
-
 [font_size=36]Update V1.6.2 | 4/27/2025[/font_size]
+
+[b]Levels:[/b]
+[ul]Level 3
+[ul]nerfed the begining
+[/ul]
+Level 4
+[ul]It exists
+[/ul][/ul]
+
+[b]Movement:[/b]
+[ul]Modified Roof sliding. [i]Should[/i] be less janky
+[/ul]
+
+[b]Sprites:[/b]
+[ul]Ball
+[ul]New animation for idling for 10 secconds
+[/ul][/ul]
+
+[b]Other[/b]
+  -New Boot splash logo
+
+\\- TexanDoomGuy
+[font_size=36]Update V1.6.3 | 4/28/2025[/font_size]
 
 [b]Levels:[/b]
 [ul]Level select
@@ -414,8 +437,26 @@ markdown_text = "# Update V1.6 | 4/26/2025
 
 \\- TexanDoomGuy
 
-
 # Update V1.6.2 | 4/27/2025
+
+**Levels:**
+- Level 3
+  - nerfed the begining
+- Level 4
+  - It exists
+
+**Movement:**
+- Modified Roof sliding. *Should* be less janky
+
+**Sprites:**
+- Ball
+  - New animation for idling for 10 secconds
+
+**Other**
+  -New Boot splash logo
+
+\\\\- TexanDoomGuy
+# Update V1.6.3 | 4/28/2025
 
 **Levels:**
 - Level select
