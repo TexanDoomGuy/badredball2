@@ -11,6 +11,7 @@ physics_interpolation_mode = 1
 position = Vector2(141, 312)
 process_callback = 0
 position_smoothing_speed = 20.0
+editor_draw_limits = true
 
 [node name="EndScreen" parent="Camera2D" instance=ExtResource("1_diie0")]
 visible = false

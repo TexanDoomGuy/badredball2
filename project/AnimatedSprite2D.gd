@@ -1,9 +1,14 @@
 extends AnimatedSprite2D
 var vel=Vector2.ZERO
 var prevVel=Vector2.ZERO
-var random_faces = ["idle"]
-var time_elapsed := 0.0
+var random_mouths = ["idle"]
+var random_eyes = ["loss"]
+var time_elapsed = 9
 
+var lE=len(random_eyes)
+var lM=len(random_mouths)
+
+var ranPick=84
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -19,7 +24,12 @@ func _process(delta):
 		play("blink")
 	if time_elapsed >= 10:
 		time_elapsed = 7
-		if randi_range(0,3) == 1:
-			var temp=randi_range(0,len(random_faces)-1)
-			$"../AnimatedSprite2D".play(random_faces[temp])
-			time_elapsed=0
+		ranPick=randi_range(0,lE+lM-1)
+		if ranPick>lE-1:
+			ranPick-=lE
+			$"../AnimatedSprite2D".play(random_mouths[ranPick])
+		elif ranPick <= lE-1:
+			play(random_eyes[ranPick])
+			
+		
+		

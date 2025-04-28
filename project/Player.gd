@@ -6,7 +6,7 @@ var jump_force = -500
 var max_speed = 600
 var respawn_done = 0
 var spawn_point = Vector2(192, 80)
-var friction = 0.1
+var friction = 0.001
 var max_air_speed = 900
 var temp = Vector2.ZERO
 var l_pp = Vector2(6969,-420420)
@@ -25,6 +25,7 @@ var time_scale = 1
 var on_floor = 0
 var on_ground = 0
 
+var perm_down=15
 func _ready():
 	Engine.time_scale = time_scale	
 	spawn_point = position
@@ -49,10 +50,7 @@ func _process(delta):
 	if time.y >= 60:
 		time.y -= 60
 		time.x+=1
-	if get_contact_count() == 0:
-		await get_tree().create_timer(0.1).timeout
-		gravity_scale = 1
-		mass = 1
+
 
 func _physics_process(delta):
 	
@@ -66,14 +64,16 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("restart"):
 		restart(spawn_point)
 		
-	if Input.is_action_pressed("jump") && can_jump == 1:
+	if Input.is_action_pressed("jump") && can_jump == 1 && on_floor != -1:
 		if on_floor == 1:
 			linear_velocity.y = jump_force
 			can_jump = 0
-	if Input.is_action_pressed("jump") && on_floor == -1:
+	if Input.is_action_pressed("jump") && on_floor == -1 && get_contact_count() >= 1:
 		mass = 100000000
-		gravity_scale = -1
-	if not Input.is_action_pressed("jump"):
+		gravity_scale = -8
+
+	if (gravity_scale != 1 && get_contact_count() == 0)or Input.is_action_pressed("jump")!= true:
+		mass=1
 		gravity_scale = 1
 	if Input.is_action_pressed("right"):
 		if ((linear_velocity.x < max_speed) and (on_ground == 1)) or on_ground == 0:
@@ -136,3 +136,9 @@ func _on_timer_timeout():
 func _on_respawn_counter_delay_timeout():
 	can_count = true
 	
+
+
+func _on_timer_2_timeout():
+	if (gravity_scale != 1 && get_contact_count() == 0)or Input.is_action_pressed("jump")!= true:
+		mass=1
+		gravity_scale = 1

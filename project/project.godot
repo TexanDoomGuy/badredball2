@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="Bad Red Ball 2"
-config/version="v1.6.1"
+config/version="1.6.2"
 run/main_scene="res://Game.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=60
+boot_splash/bg_color=Color(0.00635396, 0, 0.319124, 1)
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/image="uid://0ljpft8nfpxw"
 config/icon="res://Face2.png"
 
 [autoload]
@@ -28,6 +32,7 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/stretch/scale=0.75
 
 [editor]
 

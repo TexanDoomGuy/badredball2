@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://fsknf4jpwoaa"]
 
-[ext_resource type="Script" uid="uid://b1ga4qnrfm6p2" path="res://Level 3.gd" id="1_4r2af"]
+[ext_resource type="Script" uid="uid://thtsp2ksq6f2" path="res://Level 4.gd" id="1_kf8ir"]
 [ext_resource type="TileSet" uid="uid://clqx32pwn4yrg" path="res://level 12.tres" id="2_kf8ir"]
 [ext_resource type="PackedScene" uid="uid://mc81any4af4j" path="res://Player.tscn" id="3_7bujp"]
 [ext_resource type="Texture2D" uid="uid://d264yldybgtra" path="res://shading.png" id="4_xie4e"]
@@ -20,7 +20,7 @@ transition = 0
 ease = 2
 
 [node name="Level 3" type="Node2D"]
-script = ExtResource("1_4r2af")
+script = ExtResource("1_kf8ir")
 
 [node name="JumpDelay" type="Timer" parent="."]
 process_callback = 0
@@ -93,12 +93,14 @@ position = Vector2(1069, 173)
 script = ExtResource("6_kf8ir")
 follow_mode = 2
 follow_target = NodePath("../Player")
+zoom = Vector2(1.25, 1.25)
 tween_resource = SubResource("Resource_sxpo6")
 follow_damping = true
 follow_damping_value = Vector2(0.105, 0.305)
 dead_zone_width = 0.39
 dead_zone_height = 0.283
 show_viewfinder_in_play = true
+draw_limits = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="Camera" parent="." instance=ExtResource("8_xie4e")]
