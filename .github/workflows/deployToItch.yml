@@ -1,4 +1,4 @@
-name: Deploy
+name: DeployToItch
 
 on:
   push:
@@ -12,7 +12,7 @@ on:
         default: "v1.0.0"
 env:
   ITCH_USERNAME: texandoomguy2
-  ITCH_GAME_ID: 3514652
+  ITCH_GAME_ID: bad-red-ball-2
 jobs:
   deploy:
     name: Upload to Itch
